@@ -1,6 +1,5 @@
 package GameObjects;
 
-import main.Effect;
 import main.Game;
 import main.HUD;
 import main.Handler;
@@ -8,7 +7,7 @@ import main.Handler;
 import java.awt.*;
 
 public class Player extends GameObject {
-    private Effect effect=new Effect();
+//    private Effect effect=new Effect();
 
     public Player(int x, int y, ID id,Handler handler) {
         super(x,y,id);

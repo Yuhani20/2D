@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private HUD hud;
     private Spawner spawner;
-    private Effect effect;
+//    private Effect effect;
 
     Random r;
 
@@ -28,7 +28,7 @@ public class Game extends Canvas implements Runnable {
         new Window(WIDTH,HEIGHT,"a Boring Game",this);
         hud=new HUD();
         spawner=new Spawner(handler,hud);
-        effect=new Effect();
+//        effect=new Effect();
 
         r=new Random();
 
