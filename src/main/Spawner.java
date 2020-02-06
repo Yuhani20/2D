@@ -3,6 +3,7 @@ package main;
 import GameObjects.BasicEnemy;
 import GameObjects.FasterEnemy;
 import GameObjects.ID;
+import GameObjects.SmartEnemy;
 
 import java.util.Random;
 
@@ -26,13 +27,17 @@ public class Spawner {
             scoreKeep=0;
             hud.setLevel(hud.getLevel()+1);
 
-            if (hud.getLevel()<=3) {
+            if (hud.getLevel()<=2) {
                 handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
             }
 
-//            if (hud.getLevel()>=4&&hud.getLevel()<=6){
-//                handler.addObject(new FasterEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.FasterEnemy,handler));
-//            }
+            if (hud.getLevel()==4){
+                handler.addObject(new FasterEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.FasterEnemy,handler));
+            }
+
+            if (hud.getLevel()==5){
+                handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.FasterEnemy,handler));
+            }
 
         }
 
