@@ -7,11 +7,11 @@ import java.awt.*;
 public abstract class GameObject {
     protected Handler handler;
 
-    protected int x,y;
+    protected float x,y;
     protected ID id;
-    protected int velX,velY;
+    protected float velX,velY;
 
-    public GameObject(int x,int y,ID id) {
+    public GameObject(float x,float y,ID id) {
          setId(id);
          setX(x);
          setY(y);
@@ -21,10 +21,10 @@ public abstract class GameObject {
     public abstract void render(Graphics g);
     public abstract Rectangle getBounds();
 
-    public void setX(int x) { this.x=x; }
-    public void setY(int y) { this.y=y; }
-    public int getX() { return x; }
-    public int getY() {
+    public void setX(float x) { this.x=x; }
+    public void setY(float y) { this.y=y; }
+    public float getX() { return x; }
+    public float getY() {
         return y;
     }
     public void setId(ID id) {
@@ -33,21 +33,21 @@ public abstract class GameObject {
     public ID getId() {
         return id;
     }
-    public void setVelX(int velX) {
+    public void setVelX(float velX) {
         this.velX=velX;
     }
-    public void setVelY(int velY) {
+    public void setVelY(float velY) {
         this.velY=velY;
     }
-    public int getVelX() {
+    public float getVelX() {
         return velX;
     }
-    public int getVelY() {
+    public float getVelY() {
         return velY;
     }
 
     public  void addTrail(Color color,int width,int height,float life){
-        handler.addObject(new Trail(x,y,ID.Trail,handler,color,width,height,life));
+        handler.addObject(new Trail((int)x,(int)y,ID.Trail,handler,color,width,height,life));
     }
 
 }
