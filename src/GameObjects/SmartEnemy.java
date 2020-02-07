@@ -42,12 +42,12 @@ public class SmartEnemy extends GameObject {
         if (x<=0||x>= Game.WIDTH-32) velX*=-1;
         if (y<=0||y>=Game.HEIGHT-48) velY*=-1;
 
-        addTrail(Color.red,16,16,0.1f);
+        addTrail(Color.pink,16,16,0.05f);
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.magenta);
+        g.setColor(Color.pink);
         g.fillRect((int)x,(int)y,WIDTH,HEIGHT);
     }
 

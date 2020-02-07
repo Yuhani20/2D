@@ -28,7 +28,7 @@ public class FasterEnemy extends GameObject {
         if (x<=0||x>= Game.WIDTH-32) velX*=-1;
         if (y<=0||y>=Game.HEIGHT-48) velY*=-1;
 
-        addTrail(Color.cyan,WIDTH,HEIGHT,0.05f);
+        addTrail(Color.cyan,WIDTH,HEIGHT,0.08f);
     }
 
     @Override
