@@ -36,7 +36,7 @@ public class Trail extends GameObject {
         graphics2D.setComposite(makeTramsparent(alpha));
 
         g.setColor(color);
-        g.fillRect(x,y,width,height);
+        g.fillRect((int)x,(int)y,width,height);
 
         graphics2D.setComposite(makeTramsparent(1));
 

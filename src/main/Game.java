@@ -110,7 +110,7 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    public static int clamp(int val,int min,int max){
+    public static float clamp(float val,float min,float max){
         if (val<=min) return val=min;
         else if (val>=max) return val=max;
         else return val;

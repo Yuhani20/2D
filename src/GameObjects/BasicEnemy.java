@@ -33,12 +33,12 @@ public class BasicEnemy extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect(x,y,WIDTH,HEIGHT);
+        g.fillRect((int)x,(int)y,WIDTH,HEIGHT);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,WIDTH,HEIGHT);
+        return new Rectangle((int)x,(int)y,WIDTH,HEIGHT);
     }
 
 }
