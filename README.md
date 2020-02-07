@@ -2,4 +2,4 @@
 serious
 
 
-with all variables are going to be transformed into float.
+with all variables transformed into float.
