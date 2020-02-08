@@ -2,7 +2,6 @@ package main;
 
 import GameObjects.GameObject;
 import GameObjects.ID;
-import GameObjects.Player;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -35,15 +34,14 @@ public class Handler {
 
     public void cleanEnemies(){
         for(int i=0;i<objects.size();i++){
-            GameObject tempObject=objects.get(i);
 
-            if (tempObject.getId()== ID.Player){
-                objects.clear();
-                addObject(new Player((int)tempObject.getX(),(int)tempObject.getY(),ID.Player,this));
+            GameObject tempObject=objects.get(i);
+            if (tempObject.getId() != ID.Player) {
+                objects.remove(tempObject);
+                i--;
             }
 
         }
-
     }
 
     public int getSize(){

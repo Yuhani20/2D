@@ -37,7 +37,7 @@ public class Spawner {
             }
 
             if (hud.getLevel()==5){
-                //handler.cleanEnemies();
+                handler.cleanEnemies();
                 handler.addObject(new BossEnemy(Game.WIDTH/2-40,0,ID.BossEnemy,handler));
             }
 
