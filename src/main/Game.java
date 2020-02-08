@@ -1,12 +1,7 @@
 package main;
 
-import GameObjects.BasicEnemy;
-import GameObjects.ID;
-import GameObjects.Player;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
     public static final int WIDTH=640,HEIGHT=WIDTH/12*9;
@@ -17,23 +12,21 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private HUD hud;
     private Spawner spawner;
+    private Menu menu;
 //    private Effect effect;
 
-    Random r;
+    static STATE state=STATE.Menu;
 
     public Game(){
         handler=new Handler();
         this.addKeyListener(new KeyInput(handler));
+        menu=new Menu(handler);
+        this.addMouseListener(menu);
 
         new Window(WIDTH,HEIGHT,"a Boring Game",this);
         hud=new HUD();
         spawner=new Spawner(handler,hud);
 //        effect=new Effect();
-
-        r=new Random();
-
-        handler.addObject(new Player(r.nextInt(WIDTH2),r.nextInt(HEIGHT2), ID.Player,handler));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH2),r.nextInt(HEIGHT2),ID.BasicEnemy,handler));
 
     }
 
@@ -86,9 +79,14 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick(){
-        handler.tick();
-        hud.tick();
-        spawner.tick();
+        if (state==STATE.Game) {
+            handler.tick();
+            hud.tick();
+            spawner.tick();
+        }else if (state==STATE.Menu){
+//            handler.tick();
+            menu.tick();
+        }
     }
 
     private void render(){
@@ -103,7 +101,10 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(0,0,WIDTH,HEIGHT);
 
         handler.render(g);
-        hud.render(g);
+        if (state==STATE.Game)
+            hud.render(g);
+        else if (state==STATE.Menu) menu.render(g);
+
 //        effect.render(g);
 
         g.dispose();
@@ -121,5 +122,3 @@ public class Game extends Canvas implements Runnable {
     }
 
 }
-
-//test commit second time
