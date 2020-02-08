@@ -15,8 +15,8 @@ public class FasterEnemy extends GameObject {
     public FasterEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler=handler;
-        setVelX(8+r.nextInt(6));
-        setVelY(8+r.nextInt(6));
+        setVelX(4+r.nextInt(4));
+        setVelY(4+r.nextInt(4));
 
     }
 
@@ -28,7 +28,7 @@ public class FasterEnemy extends GameObject {
         if (x<=0||x>= Game.WIDTH-32) velX*=-1;
         if (y<=0||y>=Game.HEIGHT-48) velY*=-1;
 
-        addTrail(Color.cyan,WIDTH,HEIGHT,0.08f);
+        addTrail(Color.cyan,WIDTH,HEIGHT,0.07f);
     }
 
     @Override

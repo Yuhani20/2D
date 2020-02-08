@@ -1,9 +1,6 @@
 package main;
 
-import GameObjects.BasicEnemy;
-import GameObjects.FasterEnemy;
-import GameObjects.ID;
-import GameObjects.SmartEnemy;
+import GameObjects.*;
 
 import java.util.Random;
 
@@ -35,8 +32,13 @@ public class Spawner {
                 handler.addObject(new FasterEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.FasterEnemy,handler));
             }
 
-            if (hud.getLevel()==5){
+            if (hud.getLevel()==4){
                 handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.SmartEnemy,handler));
+            }
+
+            if (hud.getLevel()==5){
+                //handler.cleanEnemies();
+                handler.addObject(new BossEnemy(Game.WIDTH/2-40,0,ID.BossEnemy,handler));
             }
 
         }

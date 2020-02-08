@@ -32,7 +32,7 @@ public class Player extends GameObject {
 
             if (tempObject.getId()==ID.BasicEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=2;
+                    HUD.HEALTH-=1;
                 }
             }
 
@@ -44,9 +44,22 @@ public class Player extends GameObject {
 
             if (tempObject.getId()==ID.SmartEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
+                    HUD.HEALTH-=2;
+                }
+            }
+
+            if (tempObject.getId()==ID.BossEnemy){
+                if (getBounds().intersects(tempObject.getBounds())){
                     HUD.HEALTH-=3;
                 }
             }
+
+            if (tempObject.getId()==ID.BossEnemyBullet){
+                if (getBounds().intersects(tempObject.getBounds())){
+                    HUD.HEALTH-=0.5;
+                }
+            }
+
 
         }
 
