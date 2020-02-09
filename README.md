@@ -1,5 +1,7 @@
 # first-2D-Game
 serious
 
+Latest commits:
 
-with all variables transformed into float.
+    cleanEnemy() in Handler
+    Menu added
