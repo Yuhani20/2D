@@ -23,8 +23,9 @@ public class Menu extends MouseAdapter {
 
         if (mouseOver(mX,mY)){
             Game.state=STATE.Game;
+            handler.removeObject();
+            handler.removeObject();
             handler.addObject(new Player(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Player, handler));
-            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
         }
 
         if (mouseOver3(mX,mY)){
@@ -45,10 +46,6 @@ public class Menu extends MouseAdapter {
     }
 
     public void tick(){
-//        int timer=50;
-//        if (timer<=0){
-//            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
-//        }else timer--;
 
     }
 

@@ -32,6 +32,10 @@ public class Handler {
         objects.remove(object);
     }
 
+    public void removeObject(){
+        objects.remove();
+    }
+
     public void cleanEnemies(){
         for(int i=0;i<objects.size();i++){
 
