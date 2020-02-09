@@ -1,6 +1,5 @@
 package main;
 
-import GameObjects.BasicEnemy;
 import GameObjects.ID;
 import GameObjects.Player;
 

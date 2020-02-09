@@ -10,12 +10,11 @@ public class BossEnemyBullet extends GameObject {
     private final int WIDTH=8;
     private final int HEIGHT=8;
 
-    private Random r=new Random();
-
     public BossEnemyBullet(int x, int y, ID id, Handler handler) {
         super(x,y,id);
         this.handler=handler;
-        setVelX(-5+r.nextInt(10));
+        Random r = new Random();
+        setVelX(-5+ r.nextInt(10));
         setVelY(3);
     }
 

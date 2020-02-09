@@ -10,6 +10,7 @@ public class Handler {
 
     private LinkedList<GameObject> objects=new LinkedList<GameObject>();
 
+    //The flowing 2 methods cant be replaced with enhanced for, or it couldn't run.
     public void tick(){
         for (int i=0;i< objects.size();i++){
             GameObject tempObject=objects.get(i);

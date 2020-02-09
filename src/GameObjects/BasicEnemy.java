@@ -10,13 +10,12 @@ public class BasicEnemy extends GameObject {
     private final int WIDTH=16;
     private final int HEIGHT=16;
 
-    private Random r=new Random();
-
     public BasicEnemy(int x, int y, ID id,Handler handler) {
         super(x,y,id);
         this.handler=handler;
-        setVelX(2+r.nextInt(4));
-        setVelY(3+r.nextInt(3));
+        Random r = new Random();
+        setVelX(2+ r.nextInt(4));
+        setVelY(3+ r.nextInt(3));
     }
 
     @Override
