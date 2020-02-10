@@ -3,4 +3,4 @@ serious
 
 Latest commits:
 
-_About_ is finished, nice-menu has not merge into.
+_About_ is finished, merge branch _better-menu_.
