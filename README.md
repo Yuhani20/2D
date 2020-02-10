@@ -3,5 +3,4 @@ serious
 
 Latest commits:
 
-    cleanEnemy() in Handler
-    Menu added
+_About_ is finished, nice-menu has not merge into.

@@ -22,6 +22,7 @@ public class Menu extends MouseAdapter {
         int mY=e.getY();
 
         if(Game.state==STATE.Menu) {
+
             if (mouseOver(mX, mY)) {
                 Game.state = STATE.Game;
                 handler.addObject(new Player(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Player, handler));
@@ -38,9 +39,10 @@ public class Menu extends MouseAdapter {
         }
 
         else if (Game.state==STATE.About){
-            if (mouseOver4(mX,mY)){
+            if (mouseOver2(mX,mY)){
                 Game.state=STATE.Menu;
             }
+
         }
 
     }
@@ -59,10 +61,6 @@ public class Menu extends MouseAdapter {
 
     private boolean mouseOver3(int mX, int mY){
         return mX > 20 && mX < 20 + 100 && mY > 150 && mY < 150 + 20;
-    }
-
-    private boolean mouseOver4(int mX, int mY){
-        return mX > 115 && mX < 115 + 100 && mY > 100 && mY < 100 + 20;
     }
 
     public void tick(){
@@ -88,18 +86,24 @@ public class Menu extends MouseAdapter {
         }
 
         else if (Game.state==STATE.About){
-            Font font2=new Font("font name", Font.PLAIN,20);
+            Font font2=new Font("font name", Font.PLAIN,15);
             g.setFont(font2);
             g.setColor(Color.lightGray);
-            g.drawString("2020 春",25,118);
+            g.drawString("2020 春，我坐困家中，萬難出門，",25,300);
+            g.drawString("需勇士襄助，離開虎穴，",30,340);
+            g.drawString("前方有敵人",30,380);
 
-            Font font3=new Font("font name", Font.ITALIC,15);
+            Font font3=new Font("font name", Font.ITALIC,30);
             g.setFont(font3);
             g.setColor(Color.lightGray);
-            g.drawRect(115, 100,100,20);
-            g.drawString("《——",135,114);
-        }
+            g.drawString("！",105,390);
 
+            Font font4=new Font("font name", Font.ITALIC,15);
+            g.setFont(font4);
+            g.setColor(Color.lightGray);
+            g.drawRect(15, 100, 100, 20);
+            g.drawString("《——", 40, 114);
+        }
     }
 
 }

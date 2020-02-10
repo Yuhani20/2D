@@ -1,6 +1,7 @@
 package main;
 
 public enum STATE {
-    Game(),
-    Menu();
+    Game,
+    Menu,
+    About
 }
