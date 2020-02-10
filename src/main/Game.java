@@ -83,10 +83,10 @@ public class Game extends Canvas implements Runnable {
             handler.tick();
             hud.tick();
             spawner.tick();
-        }else if (state==STATE.Menu){
-//            handler.tick();
+        }/*else if (state==STATE.Menu){
+            handler.tick();
             menu.tick();
-        }
+        }*/
     }
 
     private void render(){

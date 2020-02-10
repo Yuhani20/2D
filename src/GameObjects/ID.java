@@ -7,5 +7,5 @@ public enum ID {
     SmartEnemy(),
     BossEnemy(),
     BossEnemyBullet(),
-    Trail();
+    Trail()
 }

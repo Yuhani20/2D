@@ -45,10 +45,6 @@ public class Menu extends MouseAdapter {
     }
 
     public void tick(){
-//        int timer=50;
-//        if (timer<=0){
-//            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
-//        }else timer--;
 
     }
 
