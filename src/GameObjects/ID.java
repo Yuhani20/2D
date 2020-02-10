@@ -1,11 +1,12 @@
 package GameObjects;
 
 public enum ID {
-    Player,
-    BasicEnemy,
-    FasterEnemy,
-    SmartEnemy,
-    BossEnemy,
-    BossEnemyBullet,
-    Trail
+    Player(),
+    BasicEnemy(),
+    FasterEnemy(),
+    SmartEnemy(),
+    BossEnemy(),
+    BossEnemyBullet(),
+    Trail(),
+    Adornment();
 }

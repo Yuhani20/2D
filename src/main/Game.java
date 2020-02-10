@@ -1,7 +1,12 @@
 package main;
 
+import GameObjects.Adornment;
+import GameObjects.BasicEnemy;
+import GameObjects.ID;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
     public static final int WIDTH=640,HEIGHT=WIDTH/12*9;
@@ -27,6 +32,11 @@ public class Game extends Canvas implements Runnable {
         hud=new HUD();
         spawner=new Spawner(handler,hud);
 //        effect=new Effect();
+
+        Random r=new Random();
+        handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
+        handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
 
     }
 
@@ -83,6 +93,9 @@ public class Game extends Canvas implements Runnable {
             handler.tick();
             hud.tick();
             spawner.tick();
+        }else if (state==STATE.Menu){
+            handler.tick();
+//            menu.tick();
         }
     }
 

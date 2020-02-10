@@ -10,13 +10,12 @@ public class FasterEnemy extends GameObject {
     private final int WIDTH=10;
     private final int HEIGHT=10;
 
-    private Random r=new Random();
-
     public FasterEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler=handler;
-        setVelX(4+r.nextInt(4));
-        setVelY(4+r.nextInt(4));
+        Random r = new Random();
+        setVelX(4+ r.nextInt(4));
+        setVelY(4+ r.nextInt(4));
 
     }
 

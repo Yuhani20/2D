@@ -6,16 +6,16 @@ import main.Handler;
 import java.awt.*;
 import java.util.Random;
 
-public class BossEnemyBullet extends GameObject {
+public class Adornment extends GameObject {
     private final int WIDTH=8;
     private final int HEIGHT=8;
 
-    public BossEnemyBullet(int x, int y, ID id, Handler handler) {
+    public Adornment(int x, int y, ID id, Handler handler) {
         super(x,y,id);
         this.handler=handler;
         Random r = new Random();
         setVelX(-5+ r.nextInt(10));
-        setVelY(3);
+        setVelY(-3);
     }
 
     @Override
@@ -23,14 +23,15 @@ public class BossEnemyBullet extends GameObject {
         x+=velX;
         y+=velY;
 
-        if (y>=Game.HEIGHT) handler.removeObject(this);
+        if (x<=0||x>= Game.WIDTH-32) velX*=-1;
+        if (y<=0||y>=Game.HEIGHT-48) velY*=-1;
 
-        addTrail(Color.yellow,WIDTH,HEIGHT,0.15f);
+        addTrail(Color.green,WIDTH,HEIGHT,0.15f);
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.YELLOW);
+        g.setColor(Color.green);
         g.fillRect((int)x,(int)y,WIDTH,HEIGHT);
     }
 
@@ -40,3 +41,4 @@ public class BossEnemyBullet extends GameObject {
     }
 
 }
+

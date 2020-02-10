@@ -4,15 +4,12 @@ import main.Game;
 import main.Handler;
 
 import java.awt.*;
-import java.util.Random;
 
 public class SmartEnemy extends GameObject {
     private final int WIDTH=16;
     private final int HEIGHT=16;
 
     private GameObject player;
-
-    private Random r=new Random();
 
     public SmartEnemy(int x, int y, ID id, Handler handler) {
         super(x,y,id);

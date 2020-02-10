@@ -1,6 +1,5 @@
 package main;
 
-import GameObjects.BasicEnemy;
 import GameObjects.ID;
 import GameObjects.Player;
 
@@ -25,8 +24,9 @@ public class Menu extends MouseAdapter {
 
             if (mouseOver(mX, mY)) {
                 Game.state = STATE.Game;
+                handler.removeObject();
+            handler.removeObject();
                 handler.addObject(new Player(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Player, handler));
-                handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
             }
 
             if (mouseOver2(mX, mY)) {
