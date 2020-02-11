@@ -62,7 +62,7 @@ public class Menu extends MouseAdapter {
                 handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
                 handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
                     //Reset HUD
-                HUD.setHealth(100);     //若不重设 HEALTH，Menu.tick()会立刻使STATE再次成为False
+                HUD.setHealth(200);     //若不重设 HEALTH，Menu.tick()会立刻使STATE再次成为False
                 HUD.setScore(0);
                 HUD.setLevel(1);
             }
