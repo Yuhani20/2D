@@ -3,4 +3,4 @@ serious
 
 Latest commits:
 
-_About_ is finished, merge branch _better-menu_.
+You can restart the game after dead right now.

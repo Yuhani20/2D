@@ -49,6 +49,14 @@ public class Handler {
         }
     }
 
+    public void cleanAll(){
+        for(int i=0;i<objects.size();i++){
+            GameObject tempObject=objects.get(i);
+            objects.remove(tempObject);
+            i--;
+        }
+    }
+
     public int getSize(){
         return objects.size();
     }

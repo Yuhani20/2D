@@ -31,31 +31,31 @@ public class Player extends GameObject {
 
             if (tempObject.getId()==ID.BasicEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=1;
+                    HUD.setHealth(HUD.getHealth()-1);
                 }
             }
 
             if (tempObject.getId()==ID.FasterEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=1;
+                    HUD.setHealth(HUD.getHealth()-1);
                 }
             }
 
             if (tempObject.getId()==ID.SmartEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=2;
+                    HUD.setHealth(HUD.getHealth()-2);
                 }
             }
 
             if (tempObject.getId()==ID.BossEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=3;
+                    HUD.setHealth(HUD.getHealth()-3);
                 }
             }
 
             if (tempObject.getId()==ID.BossEnemyBullet){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=0.5;
+                    HUD.setHealth(HUD.getHealth()-1);
                 }
             }
 

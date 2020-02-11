@@ -4,24 +4,24 @@ import java.awt.*;
 
 public class HUD {
 
-    public static float HEALTH=100;
+    private static float health=100;
     private float greenValue=255;
 
-    private int score=0;
-    private int level=1;
+    private static int score=0;
+    private static int level=1;
 
     public void tick(){
-        HEALTH=Game.clamp(HEALTH,0,100);
+        health=Game.clamp(health,0,100);
         greenValue=Game.clamp(greenValue,0,255);
 
-        greenValue=HEALTH*2;
+        greenValue=health*2;
 
         score+=3;
     }
 
     public void render(Graphics g){
         g.setColor(new Color(100,(int)greenValue,0));
-        g.fillRect(10,10,(int)HEALTH,5);
+        g.fillRect(10,10,(int)health,5);
 
         g.setColor(new Color(255,255,153));
         g.drawString("Score: "+score,540,13);
@@ -29,21 +29,28 @@ public class HUD {
 
     }
 
-    public void setScore(int score){
-        this.score=score;
+    public static void setScore(int score){
+        HUD.score=score;
     }
 
-    public int getScore() {
+    public static int getScore() {
         return score;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public static void setLevel(int level) {
+        HUD.level = level;
     }
 
-    public int getLevel() {
+    public static int getLevel() {
         return level;
     }
 
+    public static void setHealth(float health) {
+        HUD.health = health;
+    }
+
+    public static float getHealth() {
+        return health;
+    }
 
 }

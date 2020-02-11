@@ -16,6 +16,7 @@ public class Adornment extends GameObject {
         Random r = new Random();
         setVelX(-5+ r.nextInt(10));
         setVelY(-3);
+        if (velX==0) setVelX(1);
     }
 
     @Override

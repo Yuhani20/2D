@@ -1,5 +1,7 @@
 package main;
 
+import GameObjects.Adornment;
+import GameObjects.BasicEnemy;
 import GameObjects.ID;
 import GameObjects.Player;
 
@@ -11,6 +13,9 @@ import java.util.Random;
 public class Menu extends MouseAdapter {
     private Handler handler;
     private Random r=new Random();
+
+    private int deadTime=100;
+    private int menuTime=300;
 
     public Menu(Handler handler){
         this.handler=handler;
@@ -25,7 +30,7 @@ public class Menu extends MouseAdapter {
             if (mouseOver(mX, mY)) {
                 Game.state = STATE.Game;
                 handler.removeObject();
-            handler.removeObject();
+                handler.removeObject();
                 handler.addObject(new Player(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Player, handler));
             }
 
@@ -38,11 +43,27 @@ public class Menu extends MouseAdapter {
             }
         }
 
-        else if (Game.state==STATE.About){
+        else if (Game.state==STATE.About||Game.state==STATE.EndMenu){
+
+            //About
             if (mouseOver2(mX,mY)){
                 Game.state=STATE.Menu;
             }
 
+            //End Menu
+            if (mouseOver4(mX,mY)){
+                Game.state=STATE.Menu;
+
+                //New Game
+                    //Menu Elements
+                handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
+                handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
+                handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
+                    //Reset HUD
+                HUD.setHealth(100);     //若不重设 HEALTH，Menu.tick()会立刻发现，使STATE再次成为False
+                HUD.setScore(0);
+                HUD.setLevel(1);
+            }
         }
 
     }
@@ -63,14 +84,40 @@ public class Menu extends MouseAdapter {
         return mX > 20 && mX < 20 + 100 && mY > 150 && mY < 150 + 20;
     }
 
+    private boolean mouseOver4(int mX, int mY){
+        return mX > 200 && mX < 270 && mY > 200 && mY < 220;
+    }
+
     public void tick(){
-        if (HUD.HEALTH==0){
-            Game.state=STATE.End;
+
+        //失败
+        if (HUD.getHealth()==0){
+            Game.state=STATE.False;
         }
+
+        //Next Move
+        if (Game.state==STATE.False) {
+
+            if (deadTime <= 0) {
+
+                //Clear all
+                handler.cleanAll();
+
+                //Start end menu
+                if (menuTime<=0){
+                    Game.state=STATE.EndMenu;
+                }else menuTime--;
+
+            } else deadTime--;
+        }
+
     }
 
     public void render(Graphics g){
+
+        //Menu
         if (Game.state==STATE.Menu) {
+
             Font font = new Font("font name", Font.ITALIC, 15);
             g.setFont(font);
 
@@ -87,7 +134,9 @@ public class Menu extends MouseAdapter {
             g.drawString("OUT", 60, 164);
         }
 
+        //About
         else if (Game.state==STATE.About){
+
             Font font2=new Font("font name", Font.PLAIN,15);
             g.setFont(font2);
             g.setColor(Color.lightGray);
@@ -107,11 +156,29 @@ public class Menu extends MouseAdapter {
             g.drawString("《——", 40, 114);
         }
 
-        else if (Game.state==STATE.End){
+        //False
+        else if (Game.state==STATE.False){
+
             Font font5=new Font("font name",Font.BOLD,60);
             g.setFont(font5);
             g.setColor(Color.RED);
             g.drawString("失 敗",230,220);
+        }
+
+        //EndMenu
+        else if (Game.state==STATE.EndMenu){
+
+            //Button
+            Font font = new Font("font name", Font.ITALIC, 15);
+            g.setFont(font);
+            g.setColor(Color.white);
+            g.drawRect(200, 200, 100, 20);
+            g.drawString("MENU", 200, 200);
+            g.setColor(new Color(0x73427B));
+            g.fillRect(200,200,70,20);
+
+            //Show Score
+
         }
     }
 

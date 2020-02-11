@@ -6,15 +6,13 @@ import java.util.Random;
 
 public class Spawner {
     private Handler handler;
-    private HUD hud;
 
     private int scoreKeep=0;
 
     private Random r=new Random();
 
-    public Spawner(Handler handler, HUD hud){
+    public Spawner(Handler handler){
         this.handler=handler;
-        this.hud=hud;
     }
 
     public void tick(){
@@ -22,21 +20,21 @@ public class Spawner {
         if (scoreKeep>=1000){
 
             scoreKeep=0;
-            hud.setLevel(hud.getLevel()+1);
+            HUD.setLevel(HUD.getLevel()+1);
 
-            if (hud.getLevel()==2) {
+            if (HUD.getLevel()==2) {
                 handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
             }
 
-            if (hud.getLevel()==3){
+            if (HUD.getLevel()==3){
                 handler.addObject(new FasterEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.FasterEnemy,handler));
             }
 
-            if (hud.getLevel()==4){
+            if (HUD.getLevel()==2){
                 handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH2),r.nextInt(Game.HEIGHT2),ID.SmartEnemy,handler));
             }
 
-            if (hud.getLevel()==5){
+            if (HUD.getLevel()==5){
                 handler.cleanEnemies();
                 handler.addObject(new BossEnemy(Game.WIDTH/2-40,0,ID.BossEnemy,handler));
             }

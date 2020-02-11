@@ -4,5 +4,6 @@ public enum STATE {
     Game,
     Menu,
     About,
-    End
+    False,
+    EndMenu
 }
