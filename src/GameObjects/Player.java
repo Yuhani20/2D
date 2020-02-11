@@ -7,7 +7,6 @@ import main.Handler;
 import java.awt.*;
 
 public class Player extends GameObject {
-//    private Effect effect=new Effect();
 
     public Player(int x, int y, ID id,Handler handler) {
         super(x,y,id);

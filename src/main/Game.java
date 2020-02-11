@@ -18,7 +18,6 @@ public class Game extends Canvas implements Runnable {
     private HUD hud;
     private Spawner spawner;
     private Menu menu;
-//    private Effect effect;
 
     static STATE state=STATE.Menu;
 
@@ -31,7 +30,6 @@ public class Game extends Canvas implements Runnable {
         new Window(WIDTH,HEIGHT,"a Boring Game",this);
         hud=new HUD();
         spawner=new Spawner(handler,hud);
-//        effect=new Effect();
 
         Random r=new Random();
         handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
@@ -93,10 +91,13 @@ public class Game extends Canvas implements Runnable {
             handler.tick();
             hud.tick();
             spawner.tick();
-        }else if (state==STATE.Menu){
-            handler.tick();
-//            menu.tick();
+            menu.tick();
         }
+
+        else if (state==STATE.Menu){
+            handler.tick();
+        }
+
     }
 
     private void render(){
@@ -113,11 +114,9 @@ public class Game extends Canvas implements Runnable {
         handler.render(g);
         if (state==STATE.Game)
             hud.render(g);
-        else if (state==STATE.Menu||state==STATE.About) {
+        else if (state==STATE.Menu||state==STATE.About||state==STATE.End) {
             menu.render(g);
         }
-
-//        effect.render(g);
 
         g.dispose();
         bs.show();

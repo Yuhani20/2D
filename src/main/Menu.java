@@ -64,7 +64,9 @@ public class Menu extends MouseAdapter {
     }
 
     public void tick(){
-
+        if (HUD.HEALTH==0){
+            Game.state=STATE.End;
+        }
     }
 
     public void render(Graphics g){
@@ -103,6 +105,13 @@ public class Menu extends MouseAdapter {
             g.setColor(Color.lightGray);
             g.drawRect(15, 100, 100, 20);
             g.drawString("《——", 40, 114);
+        }
+
+        else if (Game.state==STATE.End){
+            Font font5=new Font("font name",Font.BOLD,60);
+            g.setFont(font5);
+            g.setColor(Color.RED);
+            g.drawString("失 敗",230,220);
         }
     }
 
