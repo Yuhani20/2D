@@ -31,13 +31,13 @@ public class Player extends GameObject {
 
             if (tempObject.getId()==ID.BasicEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.setHealth(HUD.getHealth()-1);
+                    HUD.setHealth(HUD.getHealth()-3);
                 }
             }
 
             if (tempObject.getId()==ID.FasterEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.setHealth(HUD.getHealth()-1);
+                    HUD.setHealth(HUD.getHealth()-2);
                 }
             }
 
@@ -49,7 +49,7 @@ public class Player extends GameObject {
 
             if (tempObject.getId()==ID.BossEnemy){
                 if (getBounds().intersects(tempObject.getBounds())){
-                    HUD.setHealth(HUD.getHealth()-3);
+                    HUD.setHealth(HUD.getHealth()-4);
                 }
             }
 
@@ -68,7 +68,7 @@ public class Player extends GameObject {
     public void render(Graphics g) {
         Graphics2D graphics2D=(Graphics2D)g;
 
-        g.setColor(Color.white);
+        g.setColor(Color.lightGray);
         g.fillRect((int)x,(int)y,32,32);
     }
 

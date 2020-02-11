@@ -27,12 +27,12 @@ public class FasterEnemy extends GameObject {
         if (x<=0||x>= Game.WIDTH-32) velX*=-1;
         if (y<=0||y>=Game.HEIGHT-48) velY*=-1;
 
-        addTrail(Color.cyan,WIDTH,HEIGHT,0.07f);
+        addTrail(new Color(0x8B5593),WIDTH,HEIGHT,0.07f);
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.CYAN);
+        g.setColor(new Color(0x8B5593));
         g.fillRect((int)x,(int)y,WIDTH,HEIGHT);
     }
 

@@ -133,6 +133,12 @@ public class Game extends Canvas implements Runnable {
         else return val;
     }
 
+    public static double clamp(double val,double min,double max){
+        if (val<=min) return val=min;
+        else if (val>=max) return val=max;
+        else return val;
+    }
+
     public static void main(String[] args) {
         new Game();
     }

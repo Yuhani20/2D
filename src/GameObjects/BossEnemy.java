@@ -35,20 +35,20 @@ public class BossEnemy extends GameObject {
 
         if (timer2<=0){
             if (velX==0) velX=-2;
-            int spawn=r.nextInt(10);
+            int spawn=r.nextInt(8);
             if (spawn==0)
-            handler.addObject(new BossEnemyBullet((int)x+20,(int)y+20,ID.BasicEnemy,handler));
+            handler.addObject(new BossEnemyBullet((int)x+20,(int)y+20,ID.BossEnemyBullet,handler));
         }
 
         if (x<=0||x>= Game.WIDTH-32) velX*=-1;
         if (y<=0||y>=Game.HEIGHT-48) velY*=-1;
 
-        addTrail(Color.magenta,WIDTH,HEIGHT,0.1f);
+        addTrail(new Color(0xAE9842),WIDTH,HEIGHT,0.1f);
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.MAGENTA);
+        g.setColor(new Color(0xAE9842));
         g.fillRect((int)x,(int)y,WIDTH,HEIGHT);
 
     }

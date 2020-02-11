@@ -16,6 +16,7 @@ public class Menu extends MouseAdapter {
 
     private int deadTime=100;
     private int menuTime=300;
+    private int width;
 
     public Menu(Handler handler){
         this.handler=handler;
@@ -27,6 +28,7 @@ public class Menu extends MouseAdapter {
 
         if(Game.state==STATE.Menu) {
 
+            //Menu
             if (mouseOver(mX, mY)) {
                 Game.state = STATE.Game;
                 handler.removeObject();
@@ -60,7 +62,7 @@ public class Menu extends MouseAdapter {
                 handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
                 handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
                     //Reset HUD
-                HUD.setHealth(100);     //若不重设 HEALTH，Menu.tick()会立刻发现，使STATE再次成为False
+                HUD.setHealth(100);     //若不重设 HEALTH，Menu.tick()会立刻使STATE再次成为False
                 HUD.setScore(0);
                 HUD.setLevel(1);
             }
@@ -72,26 +74,21 @@ public class Menu extends MouseAdapter {
 
     }
 
-    private boolean mouseOver(int mX, int mY){
-        return mX > 10 && mX < 10 + 100 && mY > 50 && mY < 50 + 20;
-    }
+    private boolean mouseOver(int mX, int mY){ return mX > 10 && mX < 10 + 100 && mY > 50 && mY < 50 + 20; }
 
-    private boolean mouseOver2(int mX, int mY){
-        return mX > 15 && mX < 15 + 100 && mY > 100 && mY < 100 + 20;
-    }
+    private boolean mouseOver2(int mX, int mY){ return mX > 15 && mX < 15 + 100 && mY > 100 && mY < 100 + 20; }
 
-    private boolean mouseOver3(int mX, int mY){
-        return mX > 20 && mX < 20 + 100 && mY > 150 && mY < 150 + 20;
-    }
+    private boolean mouseOver3(int mX, int mY){ return mX > 20 && mX < 20 + 100 && mY > 150 && mY < 150 + 20; }
 
     private boolean mouseOver4(int mX, int mY){
-        return mX > 200 && mX < 270 && mY > 200 && mY < 220;
+        return mX > 200 && mX < 200 + width && mY > 200 && mY < 220;
     }
 
     public void tick(){
 
         //失败
         if (HUD.getHealth()==0){
+            width=HUD.getLevel()*10;    //Record Level
             Game.state=STATE.False;
         }
 
@@ -131,6 +128,7 @@ public class Menu extends MouseAdapter {
 
             g.setColor(Color.DARK_GRAY);
             g.drawRect(20, 150, 100, 20);
+            g.setColor(Color.DARK_GRAY);
             g.drawString("OUT", 60, 164);
         }
 
@@ -139,7 +137,7 @@ public class Menu extends MouseAdapter {
 
             Font font2=new Font("font name", Font.PLAIN,15);
             g.setFont(font2);
-            g.setColor(Color.lightGray);
+            g.setColor(Color.white);
             g.drawString("2020 春，我坐困家中，萬難出門，",25,300);
             g.drawString("需勇士襄助，離開虎穴，",30,340);
             g.drawString("前方有敵人",30,380);
@@ -159,10 +157,10 @@ public class Menu extends MouseAdapter {
         //False
         else if (Game.state==STATE.False){
 
-            Font font5=new Font("font name",Font.BOLD,60);
+            Font font5=new Font("font name",Font.ITALIC,60);
             g.setFont(font5);
-            g.setColor(Color.RED);
-            g.drawString("失 敗",230,220);
+            g.setColor(new Color(0xFF0002));
+            g.drawString("DIE",230,220);
         }
 
         //EndMenu
@@ -174,11 +172,14 @@ public class Menu extends MouseAdapter {
             g.setColor(Color.white);
             g.drawRect(200, 200, 100, 20);
             g.drawString("MENU", 200, 200);
-            g.setColor(new Color(0x73427B));
-            g.fillRect(200,200,70,20);
+                //Bar
+            g.setColor(new Color(0x264D91));
+            g.fillRect(200,200,width,20);
 
             //Show Score
-
+            g.setColor(Color.white);
+            g.drawString("SCORE: "+HUD.getScore(),200,150);
+            g.drawString("LEVEL: "+HUD.getLevel(),200,175);
         }
     }
 
