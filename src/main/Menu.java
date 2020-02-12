@@ -57,14 +57,7 @@ public class Menu extends MouseAdapter {
                 Game.state=STATE.Menu;
 
                 //New Game
-                    //Menu Elements
-                handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
-                handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
-                handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
-                    //Reset HUD
-                HUD.setHealth(200);     //若不重设 HEALTH，Menu.tick()会立刻使STATE再次成为False
-                HUD.setScore(0);
-                HUD.setLevel(1);
+               reStart();
             }
         }
 
@@ -82,6 +75,22 @@ public class Menu extends MouseAdapter {
 
     private boolean mouseOver4(int mX, int mY){
         return mX > 200 && mX < 200 + width && mY > 200 && mY < 220;
+    }
+
+    private void reStart(){
+
+        //New Game
+            //Menu Elements
+        handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
+        handler.addObject(new Adornment(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.Adornment, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH2), r.nextInt(Game.HEIGHT2), ID.BasicEnemy, handler));
+            //Reset HUD
+        HUD.setHealth(200);     //若不重设 HEALTH，Menu.tick()会立刻使STATE再次成为False
+        HUD.setScore(0);
+        HUD.setLevel(1);
+            //Reset timer
+        deadTime=100;
+        menuTime=300;
     }
 
     public void tick(){
