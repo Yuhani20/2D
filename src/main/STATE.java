@@ -5,5 +5,6 @@ public enum STATE {
     Menu,
     About,
     False,
-    EndMenu
+    EndMenu,
+    PauseMenu
 }

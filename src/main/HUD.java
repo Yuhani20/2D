@@ -54,4 +54,12 @@ public class HUD {
         return health;
     }
 
+    public static void setHealthLength(double healthLength) {
+        HUD.healthLength = healthLength;
+    }
+
+    public static double getHealthLength() {
+        return healthLength;
+    }
+
 }

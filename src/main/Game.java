@@ -13,7 +13,9 @@ public class Game extends Canvas implements Runnable {
     public static final int WIDTH2=WIDTH-48,HEIGHT2=HEIGHT-70;
 
     private Thread thread;
-    private boolean running=false;
+    private boolean running;
+    static boolean pause;
+
     private Handler handler;
     private HUD hud;
     private Spawner spawner;
@@ -87,21 +89,19 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick(){
-        if (state==STATE.Game) {
-            handler.tick();
-            hud.tick();
-            spawner.tick();
-            menu.tick();
-        }
+        if (!pause) {
+            if (state == STATE.Game) {
+                handler.tick();
+                hud.tick();
+                spawner.tick();
+                menu.tick();
+            } else if (state == STATE.Menu) {
+                handler.tick();
+            } else if (state == STATE.False) {
+                menu.tick();
+            }
 
-        else if (state==STATE.Menu){
-            handler.tick();
         }
-
-        else if (state==STATE.False){
-            menu.tick();
-        }
-
     }
 
     private void render(){
@@ -119,7 +119,7 @@ public class Game extends Canvas implements Runnable {
         if (state==STATE.Game) {
             hud.render(g);
         }
-        else if (state==STATE.Menu||state==STATE.About||state==STATE.False||state==STATE.EndMenu) {
+        else if (state==STATE.Menu||state==STATE.About||state==STATE.False||state==STATE.EndMenu||state==STATE.PauseMenu) {
             menu.render(g);
         }
 

@@ -45,11 +45,43 @@ public class Menu extends MouseAdapter {
             }
         }
 
+        else if (Game.state==STATE.Game){
+
+            //Pause Button
+            if (mouseOver5(mX,mY)){
+                Game.state=STATE.PauseMenu;
+            }
+        }
+
+        else if (Game.state==STATE.PauseMenu){
+
+            //Pause Menu
+            if (mouseOver(mX, mY)) {
+                Game.state = STATE.Game;
+                Game.pause=false;
+            }
+
+            if (mouseOver2(mX, mY)) {
+                Game.state = STATE.Menu;
+
+                //Clear all
+                handler.cleanAll();
+
+                //Restart
+                reStart();
+            }
+
+            if (mouseOver3(mX, mY)) {
+                System.exit(1);
+            }
+        }
+
         else if (Game.state==STATE.About||Game.state==STATE.EndMenu){
 
             //About
             if (mouseOver2(mX,mY)){
                 Game.state=STATE.Menu;
+
             }
 
             //End Menu
@@ -57,7 +89,7 @@ public class Menu extends MouseAdapter {
                 Game.state=STATE.Menu;
 
                 //New Game
-               reStart();
+                reStart();
             }
         }
 
@@ -73,9 +105,9 @@ public class Menu extends MouseAdapter {
 
     private boolean mouseOver3(int mX, int mY){ return mX > 20 && mX < 20 + 100 && mY > 150 && mY < 150 + 20; }
 
-    private boolean mouseOver4(int mX, int mY){
-        return mX > 200 && mX < 200 + width && mY > 200 && mY < 220;
-    }
+    private boolean mouseOver4(int mX, int mY){ return mX > 200 && mX < 200 + width && mY > 200 && mY < 220; }      //Go to main Menu after die
+
+    private boolean mouseOver5(int mX, int mY){ return mX > 15 && mX < 15 + HUD.getHealthLength() && mY > 10 && mY < 15; }      //Go to Pause Menu
 
     private void reStart(){
 
@@ -137,7 +169,6 @@ public class Menu extends MouseAdapter {
 
             g.setColor(Color.DARK_GRAY);
             g.drawRect(20, 150, 100, 20);
-            g.setColor(Color.DARK_GRAY);
             g.drawString("OUT", 60, 164);
         }
 
@@ -189,6 +220,25 @@ public class Menu extends MouseAdapter {
             g.setColor(Color.white);
             g.drawString("SCORE: "+HUD.getScore(),200,150);
             g.drawString("LEVEL: "+HUD.getLevel(),200,175);
+        }
+
+        //Pause Menu
+        else if (Game.state==STATE.PauseMenu){
+
+            Font font = new Font("font name", Font.ITALIC, 15);
+            g.setFont(font);
+
+            g.setColor(Color.white);
+            g.drawRect(10, 50, 100, 20);
+            g.drawString("CONTINUE", 20, 64);
+
+            g.setColor(Color.lightGray);
+            g.drawRect(15, 100, 100, 20);
+            g.drawString("MENU", 45, 114);
+
+            g.setColor(Color.DARK_GRAY);
+            g.drawRect(20, 150, 100, 20);
+            g.drawString("OUT", 60, 164);
         }
     }
 
