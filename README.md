@@ -3,4 +3,4 @@ serious
 
 Latest commits:
 
-You can restart the game after dead right now.
+Add a Pause Menu.
